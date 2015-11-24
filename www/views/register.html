@@ -1,0 +1,36 @@
+<div class="container-fluid" style="margin-top:50px">
+  <div class="row">
+    <div class="col-xs-2 col-md-3"></div>
+    <div class="col-xs-8 col-md-6">
+      <div class="panel panel-primary">
+        <div class="panel-heading"><strong>Regístrate</strong></div>
+        <div class="panel-body">
+          <form name="regForm" novalidate>
+            <label for="userInput">Nombre de usuario:</label>
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon1"><i class="fa fa-user"></i></span>
+              <input type="text" class="form-control" placeholder="Obligatorio" aria-describedby="basic-addon1" ng-model="reg.username" required>
+            </div>
+            </br></br>
+            <label for="userInput">Contraseña:</label>
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon2"><i class="fa fa-key"></i></span>
+              <input type="password" name="fPassword" class="form-control" placeholder="Obligatorio" aria-describedby="basic-addon2" ng-model="reg.password" required ng-minlength="6">
+            </div>
+            <span class="text-danger" ng-show="regForm.fPassword.$error.minlength">La contraseña ha de tener más de 6 caracteres</span>
+            </br></br>
+            <label for="userInput">Repita su contraseña:</label>
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon3"><i class="fa fa-key"></i></span>
+              <input type="password" class="form-control" placeholder="Obligatorio" aria-describedby="basic-addon3" ng-model="reg.password2" required>
+            </div>
+            <span class="text-danger" ng-show="reg.password2 && (reg.password != reg.password2)">La contraseñas no coinciden</span>
+            </br></br>
+            <button class="btn btn-success" ng-click="update(reg)" ng-disabled="!((reg.password == reg.password2) && reg.username && reg.password)"><strong><i class="fa fa-pencil"></i> Registrarse</strong></button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-2 col-md-3"></div>
+  </div>
+</div>

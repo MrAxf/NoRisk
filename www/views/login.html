@@ -1,0 +1,28 @@
+<div class="container-fluid" style="margin-top:50px">
+  <div class="row">
+    <div class="col-xs-2 col-md-3"></div>
+    <div class="col-xs-8 col-md-6">
+      <div class="panel panel-primary">
+        <div class="panel-heading"><strong>Entrar</strong></div>
+        <div class="panel-body">
+          <form name="form" class="css-form" novalidate>
+            <label for="userInput">Nombre de usuario:</label>
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon1"><i class="fa fa-user"></i></span>
+              <input type="text" class="form-control" placeholder="Usuario" aria-describedby="basic-addon1" ng-model="user.username" required>
+            </div>
+            </br>
+            <label for="userInput">Contraseña:</label>
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon2"><i class="fa fa-key"></i></span>
+              <input type="password" class="form-control" placeholder="Contraseña" aria-describedby="basic-addon2" ng-model="user.password" required>
+            </div>
+            </br>
+            <button class="btn btn-success" ng-click="login()" ng-disabled="!(user.username && user.password)"><strong><i class="fa fa-sign-in"></i> Entrar</strong></button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-2 col-md-3"></div>
+  </div>
+</div>
