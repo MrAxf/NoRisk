@@ -1,0 +1,77 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-2 col-md-1"></div>
+    <div class="col-lg-8 col-md-10"><form name="proyForm" novalidate><div class="panel panel-danger" style="margin:20px 10px 25px 10px">
+      <div class="panel-heading">
+          <strong><i class="fa fa-book"></i> <i ng-show="!project.id"> Nuevo proyecto</i><i ng-show="project.id"> Actualizar proyecto</i></strong>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-sm-6">
+            <label>Nombre del proyecto:</label>
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon1"><i class="fa fa-book"></i></span>
+              <input type="text" id="title" class="form-control" placeholder="Obligatorio" aria-describedby="basic-addon1" ng-model="project.title" required />
+            </div>
+            </br></br>
+            <label>Descripción:</label>
+            <textarea class="form-control" id="descripcion" placeholder="Opcional" ng-model="project.descripcion" rows="7" ng-model="project.descripcion"></textarea>
+            </br></br>
+          </div>
+          <div class="col-sm-6">
+            <label>Categoría:</label>
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon2"><i class="fa fa-tag"></i></span>
+              <select class="form-control" id="category" ng-model="project.category" ng-model="project.category" required>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+            </div>
+            </br></br>
+            <label>Fecha de inicio:</label>
+            <div class="form-group">
+              <div class='input-group date' id='datetimepicker1'>
+                <input type='text' class="form-control" />
+                <span class="input-group-addon">
+                  <span class="fa fa-calendar"></span>
+                </span>
+              </div>
+            </div>
+          </br></br>
+          <label>Fecha de finalización:</label>
+          <div class="form-group">
+            <div class='input-group date' id='datetimepicker2'>
+              <input type='text' class="form-control"/>
+              <span class="input-group-addon">
+                <span class="fa fa-calendar"></span>
+              </span>
+            </div>
+          </div>
+            <script type="text/javascript">
+              $(function () {
+                $('#datetimepicker1').datetimepicker({
+                  format: 'DD/MM/YYYY',
+                  locale: 'es'
+                });
+
+                $('#datetimepicker2').datetimepicker({
+                  format: 'DD/MM/YYYY',
+                  locale: 'es'
+                });
+              });
+            </script>
+          </div>
+        </div>
+      </div>
+      <div class="panel-footer">
+        <div class="row">
+          <div class=col-xs-12><button class="btn btn-success pull-right" ng-click="save()"><i class="fa fa-check"></i> Hecho</button></div>
+      </div>
+    </div></form></div>
+    <div class="col-lg-2 col-md-1"></div>
+  </div>
+</div>
+{{project | json}}

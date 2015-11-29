@@ -19,13 +19,29 @@ app.config(function($stateProvider, $urlRouterProvider) {
     })
     .state('dashboard', {
       url: "/dashboard",
-      template: "Tu dashboard esta en otro castillo"
-    }).state('projects', {
-      url: "/projects",
-      template: "Tus proyectos esta en otro castillo"
-    }).state('risks', {
-      url: "/risks",
-      template: "Tus riesgos esta en otro castillo"
+      templateUrl: "views/dashboard.html",
+      controller: "dashboardController"
+    }).state('projectForm', {
+      url: "/dashboard/projectForm",
+      params: {
+        projectId: null,
+      },
+      templateUrl: "views/projectForm.html",
+      controller: "projectFormController"
+    }).state('project', {
+      url: "/dashboard/project",
+      params: {
+        projectId: null,
+      },
+      templateUrl: "views/project.html",
+      controller: "projectController"
+    }).state('riskForm', {
+      url: "/dashboard/project/riskForm",
+      params: {
+        projectId: null,
+      },
+      templateUrl: "views/riskForm.html",
+      controller: "riskFormController"
     });
 });
 
@@ -46,7 +62,7 @@ app.factory("auth", ['$cookies','$state', '$rootScope', function($cookies, $stat
         },
         checkStatus : function()
         {
-            var estadosLogin = ["dashboard", "projects", "risks"];
+            var estadosLogin = ["dashboard", "project", "projectForm"];
             var estadosUnLogin = ["home", "login", "register"];
             if(this.in_array($state.current.name, estadosLogin) && (typeof $cookies.get("username") == 'undefined'))
             {

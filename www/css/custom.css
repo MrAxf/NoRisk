@@ -1,0 +1,57 @@
+textarea {
+    resize: none;
+}
+
+.lPanelBody {
+	max-height: 270px;
+	height: 270px;
+}
+
+.lPanelBodySmall {
+	max-height: 270px;
+	height: 270px;
+}
+
+.rPanelBody {
+	max-height: 475px;
+	height: 475px;
+	overflow-y: scroll;
+}
+
+.pointer{
+	cursor: pointer;
+}
+
+@media (min-width: 992px) {
+    .lPanelBody {
+    	max-height: 475px;
+        height: 475px;
+    }
+
+    .lPanelBodySmall {
+    	max-height: 475px;
+    	height: 475px;
+    }
+}
+
+@media (min-height: 925px) {
+
+	.rPanelBody {
+		max-height: 750px;
+		height: 750px;
+		overflow-y: scroll;
+	}
+
+	@media (min-width: 992px) {
+	    .lPanelBody {
+	    	max-height: 750px;
+	        height: 750px;
+	    }
+
+      .lPanelBodySmall {
+      	max-height: 365px;
+      	height: 365px;
+      }
+	}
+
+}

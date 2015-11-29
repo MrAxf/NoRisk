@@ -14,17 +14,7 @@ app.controller('NavBarController', ['$scope','$cookies', 'auth', function($scope
       }]
 	};
   $scope.login = {
-    left: [
-      {
-        name: "Proyectos",
-        icon: "fa fa-book",
-        link: "projects"
-      },
-      {
-        name: "Riesgos",
-        icon: "fa fa-exclamation-triangle",
-        link: "risks"
-      }],
+    left: [],
     rigth: []
 	};
 

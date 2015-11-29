@@ -1,0 +1,36 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-4"><div class="panel panel-success" style="margin:20px 10px 25px 10px">
+	        <div class="panel-heading">
+	            <strong><i class="fa fa-user"></i> Usuario</strong>
+	        </div>
+	        <div class="panel-body lPanelBody">
+	        	<div class="row">
+		        	<div class="col-md-12 col-xs-6"><img src="assets/UserLogo.png" class="center-block"></img></div>
+		        	<div class="col-md-12 col-xs-6">
+								</br>
+								<h1 class="text-center">{{user.name}}</h1>
+								</br>
+								<h3 ><p class="text-left">Proyectos en los que participas:     {{projects.length}}</h3>
+								<h3><p class="text-left">Proyectos que administras:     {{getOwnerProjectsLength()}}</h3>
+							</div>
+		        </div>
+	        </div>
+	        <div class="panel-footer">
+	            Usuario
+	        </div>
+        </div></div>
+        <div class="col-md-8"><div class="panel panel-danger" style="margin:20px 10px 25px 10px">
+	        <div class="panel-heading">
+	            <strong><i class="fa fa-book"></i> Proyectos</strong>
+	        </div>
+	        <ul class="panel-body list-group rPanelBody">
+						<project-list ng-repeat="project in projects" info="project" user='user'></project-list>
+	        </ul>
+	        <div class="panel-footer">
+						<div class="row">
+	        		<div class=col-xs-12><button class="btn btn-success pull-right" ui-sref="projectForm"><i class="fa fa-plus"></i> Nuevo proyecto</button></div>
+	        </div>
+        </div></div>
+    </div>
+</div>
