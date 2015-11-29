@@ -1,19 +1,30 @@
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-md-4"><div class="panel panel-danger" style="margin:20px 10px 25px 10px">
-	    <div class="panel-heading">
-	      <strong><i class="fa fa-book"></i> Proyecto</strong>
-	    </div>
-	    <div class="panel-body lPanelBody">
-	      <div class="row">
-          <div class="col-md-12 col-xs-6"><h1>{{project.title}}</h1></div>
-          <div class="col-md-12 col-xs-6">
-            <h3>{{project.descripcion}}</h3>
-          </div>
+		<div class="col-md-4">
+			<div class="panel panel-danger" style="margin:20px 10px 25px 10px">
+		    <div class="panel-heading">
+		      <strong><i class="fa fa-book"></i> Proyecto</strong>
 		    </div>
+		    <div class="panel-body lPanelBodySmall">
+		      <div class="row">
+	          <div class="col-md-12 col-xs-6"><h1>{{project.title}}</h1></div>
+	          <div class="col-md-12 col-xs-6">
+	            <h3>{{project.descripcion}}</h3>
+	          </div>
+			    </div>
+		    </div>
+		    <div class="panel-footer">Proyecto</div>
 	    </div>
-	    <div class="panel-footer">Proyecto</div>
-    </div></div>
+			<div class="panel panel-success" style="margin:20px 10px 25px 10px">
+		    <div class="panel-heading">
+		      <strong><i class="fa fa-users"></i> Integrantes</strong>
+		    </div>
+		    <ul class="panel-body list-group lPanelBodySmall">
+		      <li class="list-group-item" ng-repeat="user in members"><i class="fa fa-user"></i> {{user.username}}</li>
+		    </ul>
+		    <div class="panel-footer">Proyecto</div>
+	    </div>
+		</div>
     <div class="col-md-8"><div class="panel panel-warning" style="margin:20px 10px 25px 10px">
       <div class="panel-heading">
         <strong><i class="fa fa-warning"></i> Riesgos</strong>

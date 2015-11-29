@@ -8,38 +8,38 @@ app.controller('projectController', ['$scope', '$cookies', '$stateParams', '$sta
   $scope.project = {
   };
 
-  $scope.menbers = [{
+  $scope.members = [{
     id: 2,
-    name: '1'
+    username: '1'
   },
   {
     id: 3,
-    name: '2'
+    username: '2'
   },
   {
     id: 4,
-    name: '3'
+    username: '3'
   }];
 
   $scope.users = [{
     id: 2,
-    name: '1'
+    username: '1'
   },
   {
     id: 3,
-    name: '2'
+    username: '2'
   },
   {
     id: 4,
-    name: '3'
+    username: '3'
   },
   {
     id: 5,
-    name: '4'
+    username: '4'
   }];
 
   $scope.risk = [{
-    
+
   }];
 
   $scope.init = function () {

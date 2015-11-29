@@ -8,8 +8,8 @@ textarea {
 }
 
 .lPanelBodySmall {
-	max-height: 270px;
-	height: 270px;
+	max-height: 160px;
+	height: 160px;
 }
 
 .rPanelBody {
@@ -29,8 +29,8 @@ textarea {
     }
 
     .lPanelBodySmall {
-    	max-height: 475px;
-    	height: 475px;
+    	max-height: 180px;
+    	height: 180px;
     }
 }
 
@@ -49,8 +49,8 @@ textarea {
 	    }
 
       .lPanelBodySmall {
-      	max-height: 365px;
-      	height: 365px;
+      	max-height: 320px;
+      	height: 320px;
       }
 	}
 
