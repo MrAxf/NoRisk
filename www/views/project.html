@@ -19,10 +19,22 @@
 		    <div class="panel-heading">
 		      <strong><i class="fa fa-users"></i> Integrantes</strong>
 		    </div>
-		    <ul class="panel-body list-group lPanelBodySmall">
+		    <ul class="panel-body list-group lPanelBodySmall" style="overflow-y:scroll;">
 		      <li class="list-group-item" ng-repeat="user in members"><i class="fa fa-user"></i> {{user.username}}</li>
 		    </ul>
-		    <div class="panel-footer">Proyecto</div>
+		    <div class="panel-footer">
+					<form class="form-horizontal">
+						<div class="form-group">
+							<div class="col-md-8 col-xs-6">
+								<select class="form-control" id="user" ng-model="userToAdd" required>
+									<option ng-repeat="user in noMembers">{{user.username}}</option>
+								</select>
+							</div>
+							<button class="btn btn-success col-md-3 col-xs-5"><i class="fa fa-plus"></i> Añadir miembro</button>
+							<div class="col-xs-1"></div>
+						</div>
+					</form>
+				</div>
 	    </div>
 		</div>
     <div class="col-md-8"><div class="panel panel-warning" style="margin:20px 10px 25px 10px">
@@ -30,7 +42,7 @@
         <strong><i class="fa fa-warning"></i> Riesgos</strong>
       </div>
       <ul class="panel-body list-group rPanelBody">
-
+				<risk-list ng-repeat="risk in risks" info="risk"><risk-list>
       </ul>
       <div class="panel-footer">
         <div class="row">

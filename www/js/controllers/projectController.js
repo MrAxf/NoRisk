@@ -21,25 +21,55 @@ app.controller('projectController', ['$scope', '$cookies', '$stateParams', '$sta
     username: '3'
   }];
 
-  $scope.users = [{
+  $scope.noMembers = [{
+    id: 5,
+    username: '5'
+  },
+  {
+    id: 6,
+    username: '6'
+  },
+  {
+    id: 7,
+    username: '7'
+  },
+  {
+    id: 8,
+    username: '8'
+  }];
+
+  $scope.risks = [{
+    id: 1,
+    name: "Baja laboral",
+    category: "Recursos humanos",
+    probability: 5,
+    impact: "Despreciable",
+    description: "Baja de alguno de los componentes del proyecto",
+    factors: "Carga de trabajo de los miembros del proyecto",
+    reduction: "Revalanceo de la carga de trabajo",
+    supervision: "Cosas nasis (No se que poner para el ej)"
+  },
+  {
     id: 2,
-    username: '1'
+    name: "Baja laboral 2",
+    category: "Recursos humanos",
+    probability: 5,
+    impact: "Despreciable",
+    description: "Baja de alguno de los componentes del proyecto",
+    factors: "Carga de trabajo de los miembros del proyecto",
+    reduction: "Revalanceo de la carga de trabajo",
+    supervision: "Cosas nasis (No se que poner para el ej)"
   },
   {
     id: 3,
-    username: '2'
-  },
-  {
-    id: 4,
-    username: '3'
-  },
-  {
-    id: 5,
-    username: '4'
-  }];
-
-  $scope.risk = [{
-
+    name: "Baja laboral 3",
+    category: "Recursos humanos",
+    probability: 5,
+    impact: "Despreciable",
+    description: "Baja de alguno de los componentes del proyecto",
+    factors: "Carga de trabajo de los miembros del proyecto",
+    reduction: "Revalanceo de la carga de trabajo",
+    supervision: "Cosas nasis (No se que poner para el ej)"
   }];
 
   $scope.init = function () {

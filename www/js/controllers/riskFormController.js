@@ -15,8 +15,8 @@ app.controller('projectFormController', ['$scope', '$cookies', '$stateParams', f
         start_date: "01/01/2015",
         end_date: "01/02/2015",
         owner: 5
-      }else $state.go("dashboard");;
-    }
+      };
+    }else $state.go("dashboard");
 };
 
 $scope.init();

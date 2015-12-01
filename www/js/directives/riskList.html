@@ -1,0 +1,25 @@
+<li class="list-group-item">
+  <div class="container-fluid">
+    <div class="row">
+  	  <div class="col-xs-4">
+        <h2>{{info.name}}</h2>
+        <h4><strong>Categoria:</strong> {{info.category}}</h4>
+      </div>
+      <div class="col-xs-4">
+        <h4><strong>Probabilidad:</strong> {{info.probability}}%</h4>
+        <h4><strong>Impacto:</strong> {{info.impact}}</h4>
+      </div>
+        <a class="pull-right" style="margin:0px 2px;"><i class="fa fa-trash"></i></a>
+        <a class="pull-right" style="margin:0px 2px;" ui-sref="riskForm({ projectId: info.id })"><i class="fa fa-pencil-square-o"></i></a>
+    </div>
+  </br>
+    <div class="row">
+      <div class="col-xs-12">
+        <p><strong>Descripción:</strong> {{info.description}}</p>
+        <p><strong>Factores que influyen:</strong> {{info.factors}}</p>
+        <p><strong>Reducción del riesgo:</strong> {{info.reduction}}</p>
+        <p><strong>Supervisión del riesgo:</strong> {{info.supervision}}</p>
+      </div>
+    </div>
+  </div>
+</li>
