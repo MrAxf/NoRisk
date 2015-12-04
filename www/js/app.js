@@ -34,7 +34,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
         projectId: null,
       },
       templateUrl: "views/project.html",
-      controller: "projectController"
+      controller: "riskController"
     }).state('riskForm', {
       url: "/dashboard/project/riskForm",
       params: {

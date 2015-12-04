@@ -1,4 +1,4 @@
-app.controller('projectFormController', ['$scope', '$cookies', '$stateParams', function($scope, $cookies, $stateParams) {
+app.controller('riskFormController', ['$scope', '$cookies', '$stateParams', function($scope, $cookies, $stateParams) {
 
   $scope.user = {
 		name: $cookies.get("username"),
