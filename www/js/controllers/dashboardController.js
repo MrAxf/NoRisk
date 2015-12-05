@@ -1,5 +1,6 @@
-app.controller('dashboardController', ['$scope', '$cookies', function($scope, $cookies) {
+app.controller('dashboardController', ['$scope', '$cookies', 'projectService', function($scope, $cookies, projectService) {
 
+	$scope.pene = projectService.getAll();
 	$scope.projects =[{
 		id: 1,
 		title: 'Proyecto 1',

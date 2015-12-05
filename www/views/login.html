@@ -19,6 +19,7 @@
             </div>
             </br>
             <button class="btn btn-success" ng-click="login()" ng-disabled="!(user.username && user.password)"><strong><i class="fa fa-sign-in"></i> Entrar</strong></button>
+            <span class="text-danger" ng-show="fail">El usuario o la contraseña son incorrectos.</span>
           </form>
         </div>
       </div>

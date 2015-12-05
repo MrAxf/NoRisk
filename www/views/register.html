@@ -11,6 +11,7 @@
               <span class="input-group-addon" id="basic-addon1"><i class="fa fa-user"></i></span>
               <input type="text" class="form-control" placeholder="Obligatorio" aria-describedby="basic-addon1" ng-model="reg.username" required>
             </div>
+            <span class="text-danger" ng-show="users.indexOf(reg.username)!=-1">Este nombre ya está en uso</span>
             </br></br>
             <label for="userInput">Contraseña:</label>
             <div class="input-group">
@@ -26,7 +27,7 @@
             </div>
             <span class="text-danger" ng-show="reg.password2 && (reg.password != reg.password2)">La contraseñas no coinciden</span>
             </br></br>
-            <button class="btn btn-success" ng-click="update(reg)" ng-disabled="!((reg.password == reg.password2) && reg.username && reg.password)"><strong><i class="fa fa-pencil"></i> Registrarse</strong></button>
+            <button class="btn btn-success" ng-click="register()" ng-disabled="!((reg.password == reg.password2) && reg.username && reg.password && (users.indexOf(reg.username)==-1))"><strong><i class="fa fa-pencil"></i> Registrarse</strong></button>
           </form>
         </div>
       </div>

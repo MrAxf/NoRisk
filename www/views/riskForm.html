@@ -1,0 +1,78 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-2 col-md-1"></div>
+        <div class="col-lg-8 col-md-10">
+            <form name="proyForm" novalidate>
+                <div class="panel panel-warning" style="margin:20px 10px 25px 10px">
+                    <div class="panel-heading">
+                        <strong><i class="fa fa-warning"></i> <i ng-show="!project.id">Insertar nuevo requisito</i></strong>
+                        <i>*Seleccione un riesgo o cree uno nuevo</i>
+                    </div>
+
+                    <div class="panel-body">
+                        <div class="row">
+                            <div id="req" class="col-sm-6"></br>
+                                <label>Riesgo:</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon2"><i class="fa fa-tag"></i></span>
+                                    <select class="form-control" id="category" ng-model="project.category" required>
+                                        <option>-</option>
+                                        <option>1</option>
+                                        <option>2</option>
+                                    </select>
+                                </div>
+                                </br>
+                                <label>Probabilidad:</label>
+                                <input type="text" class="form-control" id="probabilidad" placeholder="Opcional" ng-model="project.probabilidad">
+                                </br>
+
+                                <label>Impacto:</label>
+                                <input type="text" class="form-control" id="impacto" placeholder="Opcional" ng-model="project.impacto">
+                                </br>
+
+                                <label>Factores:</label>
+                                <input type="text" class="form-control" id="factores" placeholder="Opcional" ng-model="project.factores">
+                                </br>
+
+                                <label>Descripción:</label>
+                                <textarea class="form-control" id="descripcion" placeholder="Opcional" ng-model="project.descripcion" rows="5"></textarea>
+                                </br>
+                            </div>
+
+                            <div id="reqNew" class="col-sm-6"></br>
+                                <label>Nuevo riesgo:</label>
+                                <input type="text" class="form-control" id="nombre" placeholder="Nombre" ng-model="project.nombre">
+                                </br>
+
+                                <label>Categoria:</label>
+                                <select class="form-control" id="categoria" ng-model="project.categoria" required>
+                                    <option>-</option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                </select>
+                                </br>
+
+                                <label>Descripción:</label>
+                                <textarea class="form-control" id="descripcionNew" placeholder="Opcional" ng-model="project.descripcionNew" rows="3"></textarea>
+                                </br>
+
+                                <label>Tipo:</label>
+                                <input type="text" class="form-control" id="tipo" placeholder="Opcional" ng-model="project.tipo">
+                                </br></br></br>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel-footer">
+                        <div class="row">
+                            <div class=col-xs-12>
+                                <button class="btn btn-success pull-right" ng-click="save()"><i class="fa fa-check"></i> Guardar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="col-lg-2 col-md-1"></div>
+        </div>
+    </div>
+</div>

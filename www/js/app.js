@@ -1,6 +1,7 @@
+var apiRestUrl = "http://umkkefcc7456.mraxf.koding.io/";
 var app = angular.module('NoRisk', ['ui.router', 'ngCookies']);
 
-app.config(function($stateProvider, $urlRouterProvider) {
+app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
   $urlRouterProvider.otherwise("/");
   $stateProvider
     .state('home', {
@@ -44,49 +45,6 @@ app.config(function($stateProvider, $urlRouterProvider) {
       controller: "riskFormController"
     });
 });
-
-app.factory("auth", ['$cookies','$state', '$rootScope', function($cookies, $state, $rootScope)
-{
-    return{
-        login : function(username, password)
-        {
-          $cookies.put('username', username);
-          $state.go("dashboard");
-          $rootScope.$broadcast('authEvent');
-        },
-        logout : function()
-        {
-          $cookies.remove("username");
-          $state.go("home");
-          $rootScope.$broadcast('authEvent');
-        },
-        checkStatus : function()
-        {
-            var estadosLogin = ["dashboard", "project", "projectForm"];
-            var estadosUnLogin = ["home", "login", "register"];
-            if(this.in_array($state.current.name, estadosLogin) && (typeof $cookies.get("username") == 'undefined'))
-            {
-              $state.go("home");
-            }
-            else if(this.in_array($state.current.name, estadosUnLogin) && (typeof $cookies.get("username") != 'undefined'))
-            {
-              $state.go("dashboard");
-            }
-        },
-        in_array : function(needle, haystack)
-        {
-            var key = '';
-            for(key in haystack)
-            {
-                if(haystack[key] == needle)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-    };
-}]);
 
 app.run(function($rootScope, auth)
 {
