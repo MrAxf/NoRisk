@@ -44,11 +44,14 @@
         <strong><i class="fa fa-warning"></i> Riesgos</strong>
       </div>
       <ul class="panel-body list-group rPanelBody">
-				<risk-list ng-repeat="risk in project.risk_projects" info="risk"><risk-list>
+				<div ng-repeat="risk in project.risk_projects | orderBy:'-probability'">
+					<div ng-show="$index == project.risk_line" class="container-fluid bg-danger"><h3><strong>Linea de corte</strong></h3></div>
+					<risk-list  info="risk" projectUrl="project.url" delete="delete(url)" ><risk-list>
+				</div>
       </ul>
       <div class="panel-footer">
         <div class="row">
-          <div class=col-xs-12><button class="btn btn-success pull-right" ui-sref="riskForm({projectId: project.id})"><i class="fa fa-plus"></i> Añadir riesgo</button></div>
+          <div class=col-xs-12><button class="btn btn-success pull-right" ui-sref="riskForm({projectUrl: project.url, projectId: project.id})"><i class="fa fa-plus"></i> Añadir riesgo</button></div>
         </div>
       </div>
     </div></div>

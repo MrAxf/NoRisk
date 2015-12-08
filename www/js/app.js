@@ -1,4 +1,4 @@
-var apiRestUrl = "http://umkkefcc7456.mraxf.koding.io/";
+var apiRestUrl = "http://umkkefcc7456.mraxf.koding.io:8080/";
 var app = angular.module('NoRisk', ['ui.router', 'ngCookies']);
 
 app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
@@ -40,6 +40,8 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
       url: "/dashboard/project/riskForm",
       params: {
         projectUrl: null,
+        projectId: null,
+        riskUrl: null
       },
       templateUrl: "views/riskForm.html",
       controller: "riskFormController"

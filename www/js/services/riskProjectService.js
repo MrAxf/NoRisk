@@ -12,8 +12,8 @@ app.factory("riskProjectService", ['$http', function($http)
           return null;
       });
     },
-    get: function(id){
-      return $http.get(apiRestUrl.concat(element,id,"/"))
+    get: function(url){
+      return $http.get(url)
         .success(function(data) {
           return data;
         })
@@ -30,8 +30,8 @@ app.factory("riskProjectService", ['$http', function($http)
           return false;
       });
     },
-    put: function(data){
-      return $http.put(apiRestUrl.concat(element), data)
+    put: function(url, data){
+      return $http.put(url, data)
         .success(function(data) {
           return true;
         })
@@ -39,8 +39,8 @@ app.factory("riskProjectService", ['$http', function($http)
           return false;
       });
     },
-    delete: function(id){
-    return $http.delete(apiRestUrl.concat(element,id,"/"))
+    delete: function(url){
+    return $http.delete(url)
       .success(function(data) {
         return true;
       })

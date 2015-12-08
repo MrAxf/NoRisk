@@ -4,10 +4,9 @@ app.directive('riskList', function($compile) {
     restrict: 'E',
     scope: {
       info: '=',
+      projecturl: '=',
+      delete: '&',
     },
     templateUrl: 'js/directives/riskList.html',
-    link: function(scope, element, attrs) {
-        $compile(element.contents())(scope.$new());
-    }
   };
 });

@@ -57,6 +57,13 @@
               </select>
             </div>
             </br></br>
+            <label>Linea de corte (número de riesgos que se contemplarán):</label>
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon3"><i class="fa fa-sort-numeric-asc"></i></span>
+              <input type="number" id="risk_line" class="form-control" placeholder="Obligatorio" aria-describedby="basic-addon3" ng-model="project.risk_line" required />
+            </div>
+            <span class="text-danger" ng-show="project.risk_line < 1">La línea de corte ha de ser mayor que 1</span>
+            </br></br>
             <label>Descripción:</label>
             <textarea class="form-control" id="descripcion" placeholder="Obligatorio" rows="7" ng-model="project.description" required></textarea>
             </br></br>

@@ -1,100 +1,112 @@
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-lg-2 col-md-1"></div>
-        <div class="col-lg-8 col-md-10">
-            <form name="riskForm" novalidate>
-                <div class="panel panel-warning" style="margin:20px 10px 25px 10px">
-                    <div class="panel-heading">
-                        <strong><i class="fa fa-warning"></i> <i ng-show="!project.id">Insertar nuevo requisito</i></strong>
-                        <i>*Seleccione un riesgo o cree uno nuevo</i>
-                    </div>
+  <div class="row">
+    <div class="col-lg-2 col-md-1"></div>
+      <div class="col-lg-8 col-md-10">
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Añadir riesgo</h4>
+              </div>
+              <div class="modal-body">
+                <label>Nombre:</label>
+                <input type="text" class="form-control" id="nombre" placeholder="Obigatorio" ng-model="risk.name">
+                </br>
 
-                    <div class="panel-body">
-                        <div class="row">
-                            <div id="req" class="col-sm-6"></br>
-                                <label>Riesgo:</label>
-                                <div class="input-group">
-                                    <span class="input-group-addon" id="basic-addon2"><i class="fa fa-tag"></i></span>
-                                    <select class="form-control" id="riesgo" ng-model="riesgo.id" onclick="cambiarCampos('1')">
-                                        <option>-</option>
-                                        <option>1</option>
-                                        <option>2</option>
-                                    </select>
-                                </div>
-                                </br>
-                                <label>Probabilidad:</label>
-                                <input type="text" class="form-control" id="probabilidad" placeholder="Opcional" ng-model="riesgo.probabilidad">
-                                </br>
+                <label>Categoria:</label>
+                <select class="form-control" id="categoria" ng-model="risk.category" required>
+                  <option>Riesgo de diseño</option>
+                  <option>Riesgo de implementación</option>
+                  <option>Riesgo de mantenimiento</option>
+                </select>
+                </br>
 
-                                <label>Impacto:</label>
-                                <input type="text" class="form-control" id="impacto" placeholder="Opcional" ng-model="riesgo.impacto">
-                                </br>
+                <label>Descripción:</label>
+                <textarea class="form-control" id="descripcionNew" placeholder="Obligatorio" ng-model="risk.description" rows="3"></textarea>
+                </br>
 
-                                <label>Factores:</label>
-                                <input type="text" class="form-control" id="factores" placeholder="Opcional" ng-model="riesgo.factores">
-                                </br>
-
-                                <label>Descripción:</label>
-                                <textarea class="form-control" id="descripcion" placeholder="Opcional" ng-model="riesgo.descripcion" rows="5"></textarea>
-                                </br>
-                            </div>
-
-                            <div id="reqNew" class="col-sm-6"></br>
-                                <label>Nuevo riesgo:</label>
-                                <input type="text" class="form-control" id="nombre" placeholder="Nombre" onclick="cambiarCampos('2')" ng-model="riesgoNew.nombre">
-                                </br>
-
-                                <label>Categoria:</label>
-                                <select class="form-control" id="categoria" ng-model="riesgoNew.categoria" required>
-                                    <option>-</option>
-                                    <option>1</option>
-                                    <option>2</option>
-                                </select>
-                                </br>
-
-                                <label>Descripción:</label>
-                                <textarea class="form-control" id="descripcionNew" placeholder="Opcional" ng-model="riesgoNew.descripcionNew" rows="3"></textarea>
-                                </br>
-
-                                <label>Tipo:</label>
-                                <input type="text" class="form-control" id="tipo" placeholder="Opcional" ng-model="riesgoNew.tipo">
-                                </br></br></br>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="panel-footer">
-                        <div class="row">
-                            <div class=col-xs-12>
-                                <button class="btn btn-success pull-right" ng-click="save()"><i class="fa fa-check"></i> Guardar</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
-            <div class="col-lg-2 col-md-1"></div>
+                <label>Tipo:</label>
+                <input type="text" class="form-control" id="tipo" placeholder="Obligatorio" ng-model="risk.type">
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="saveRisk()" ng-disabled="!(risk.name && risk.category && risk.description && risk.type)" >Añadir riesgo</button>
+              </div>
+            </div>
+          </div>
         </div>
+        <form name="riskForm" novalidate>
+          <div class="panel panel-warning" style="margin:20px 10px 25px 10px">
+            <div class="panel-heading">
+              <strong><i class="fa fa-warning"></i><i ng-show="!projectRisk.url"> Crear riesgo</i><i ng-show="projectRisk.url"> Modificar riesgo</i></strong></strong>
+            </div>
+
+            <div class="panel-body" style="height:auto;">
+              <div class="row">
+                <div class="col-sm-6"></br>
+                  <label>Riesgo:</label>
+                  <div class="radio" id="riesgo">
+                    <ul class="list-group lPanelBodySmall" style="overflow-y: scroll;">
+                      <li class="list-group-item" ng-repeat="risk in risks">
+                        <h3>
+                          &nbsp&nbsp<input type="radio" name="select risk" value={{risk.id}} ng-model="projectRisk.id_risk" ng-change="feedback()">
+                          {{risk.name}}
+                        </h3>
+                        <strong>Categoria: </strong>{{risk.category}}</br>
+                        <strong>Tipo: </strong>{{risk.type}}</br>
+                        <strong>Descripción: </strong>{{risk.description}}
+                      </li>
+                    </ul>
+                  </div>
+                  </br>
+                  <p><strong>¿No encuentras el riesgo?</strong></p>
+                  <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal">
+                    <i class="fa fa-plus"></i> Crear riesgo
+                  </button>
+                </div>
+                <div class="col-sm-6"></br>
+                  <label>Probabilidad:</label>
+                  <input type="number" class="form-control" id="probabilidad" placeholder="Obligatorio" ng-model="projectRisk.probability">
+                  <span class="text-danger" ng-show="projectRisk.probability < 0 || projectRisk.probability > 100">La probabilidad debe de estar entre 0 y 100</span>
+                  </br>
+
+                  <label>Impacto:</label>
+                  <select class="form-control" id="impacto" placeholder="Obligatorio" ng-model="projectRisk.impact">
+                    <option>Despreciable</option>
+                    <option>Mínimo</option>
+                    <option>Medio</option>
+                    <option>Alto</option>
+                    <option>Catastrófico</option>
+                  </select>
+                  </br>
+
+                  <label>Factores:</label>
+                  <textarea class="form-control" id="factors" placeholder="Obligatorio" ng-model="projectRisk.factors" rows="5"></textarea>
+                  </br>
+
+                  <label>Supervisión:</label>
+                  <textarea class="form-control" id="supervision" placeholder="Obligatorio" ng-model="projectRisk.supervision" rows="5"></textarea>
+                  </br>
+
+                  <label>Reducción:</label>
+                  <textarea class="form-control" id="reduction" placeholder="Obligatorio" ng-model="projectRisk.reduction" rows="5"></textarea>
+                  </br>
+                </div>
+              </div>
+            </div>
+
+            <div class="panel-footer">
+              <div class="row">
+                <div class=col-xs-12>
+                  <button class="btn btn-success pull-right" ng-disabled="!(projectRisk.id_risk && projectRisk.probability && (projectRisk.probability <= 100 && projectRisk.probability >= 0) && projectRisk.impact && projectRisk.factors && projectRisk.supervision && projectRisk.reduction)" ng-click="save()"><i class="fa fa-check"></i> Guardar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      <div class="col-lg-2 col-md-1"></div>
     </div>
+  </div>
 </div>
-
-<script>
-function cambiarCampos(aux)
-{
-
-    if(aux == 1)
-    {
-        document.getElementById('nombre').disabled=true;
-        document.getElementById('categoria').disabled=true;
-        document.getElementById('descripcionNew').disabled=true;
-        document.getElementById('tipo').disabled=true;
-    }
-    else if(aux == 2)
-    {
-        document.getElementById('riesgo').disabled=true;
-        document.getElementById('probabilidad').disabled=true;
-        document.getElementById('impacto').disabled=true;
-        document.getElementById('factores').disabled=true;
-        document.getElementById('descripcion').disabled=true;
-    }
-}
-</script>
+{{projectRisk}}

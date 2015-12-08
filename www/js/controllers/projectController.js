@@ -1,4 +1,4 @@
-app.controller('projectController', ['$scope', '$cookies', '$stateParams', '$state', 'projectService', 'userService', function($scope, $cookies, $stateParams, $state, projectService, userService) {
+app.controller('projectController', ['$scope', '$cookies', '$stateParams', '$state', 'projectService', 'userService', 'riskProjectService', function($scope, $cookies, $stateParams, $state, projectService, userService, riskProjectService) {
 
   $scope.user = {
 		name: $cookies.get("username"),
@@ -26,6 +26,12 @@ app.controller('projectController', ['$scope', '$cookies', '$stateParams', '$sta
     index = $scope.project.members.indexOf(parseInt(idMember));
     $scope.project.members.splice(index, 1);
     projectService.put($scope.project.url, $scope.project).success(function(){
+      $state.reload();
+    });
+  };
+
+  $scope.delete = function (url) {
+    riskProjectService.delete(url).success(function(){
       $state.reload();
     });
   };

@@ -18,6 +18,7 @@ app.controller('projectFormController', ['$scope', '$cookies', '$stateParams', '
   $scope.save = function(){
     $scope.project.start_date= moment($('#datetimepicker1 input').val(), "DD/MM/YYYY").format("YYYY-DD-MM");
     $scope.project.end_date= moment($('#datetimepicker2 input').val(), "DD/MM/YYYY").format("YYYY-DD-MM");
+    if($scope.project.risk_line == null) project.risk_line = 10;
     if($scope.project.url == null){
       projectService.post($scope.project).success(function(){
         console.log("Proyecto añadido");
@@ -46,7 +47,10 @@ app.controller('projectFormController', ['$scope', '$cookies', '$stateParams', '
         $('#datetimepicker1 input').val(startParse);
         $('#datetimepicker2 input').val(endParse);
       });
-    }else $scope.project.id_owner = $scope.user.id;
+    }else{
+      $scope.project.id_owner = $scope.user.id;
+      $scope.project.members = [];
+    }
 };
 
 $scope.init();
