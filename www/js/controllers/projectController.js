@@ -1,88 +1,49 @@
-app.controller('projectController', ['$scope', '$cookies', '$stateParams', '$state', function($scope, $cookies, $stateParams, $state) {
+app.controller('projectController', ['$scope', '$cookies', '$stateParams', '$state', 'projectService', 'userService', function($scope, $cookies, $stateParams, $state, projectService, userService) {
 
   $scope.user = {
 		name: $cookies.get("username"),
-		id: 1
+		id: $cookies.get("id")
 	};
 
-  $scope.project = {
+  $scope.project = {};
+
+  $scope.users = [];
+
+  $scope.members = [];
+
+  $scope.isOwner = false;
+
+  $scope.member = null;
+
+  $scope.addMembers = function (idMember) {
+    $scope.project.members.push(parseInt(idMember));
+    projectService.put($scope.project.url, $scope.project).success(function(){
+      $state.reload();
+    });
   };
 
-  $scope.members = [{
-    id: 2,
-    username: '1'
-  },
-  {
-    id: 3,
-    username: '2'
-  },
-  {
-    id: 4,
-    username: '3'
-  }];
-
-  $scope.noMembers = [{
-    id: 5,
-    username: '5'
-  },
-  {
-    id: 6,
-    username: '6'
-  },
-  {
-    id: 7,
-    username: '7'
-  },
-  {
-    id: 8,
-    username: '8'
-  }];
-
-  $scope.risks = [{
-    id: 1,
-    name: "Baja laboral",
-    category: "Recursos humanos",
-    probability: 5,
-    impact: "Despreciable",
-    description: "Baja de alguno de los componentes del proyecto",
-    factors: "Carga de trabajo de los miembros del proyecto",
-    reduction: "Revalanceo de la carga de trabajo",
-    supervision: "Cosas nasis (No se que poner para el ej)"
-  },
-  {
-    id: 2,
-    name: "Baja laboral 2",
-    category: "Recursos humanos",
-    probability: 5,
-    impact: "Despreciable",
-    description: "Baja de alguno de los componentes del proyecto",
-    factors: "Carga de trabajo de los miembros del proyecto",
-    reduction: "Revalanceo de la carga de trabajo",
-    supervision: "Cosas nasis (No se que poner para el ej)"
-  },
-  {
-    id: 3,
-    name: "Baja laboral 3",
-    category: "Recursos humanos",
-    probability: 5,
-    impact: "Despreciable",
-    description: "Baja de alguno de los componentes del proyecto",
-    factors: "Carga de trabajo de los miembros del proyecto",
-    reduction: "Revalanceo de la carga de trabajo",
-    supervision: "Cosas nasis (No se que poner para el ej)"
-  }];
+  $scope.deleteMember = function (idMember) {
+    index = $scope.project.members.indexOf(parseInt(idMember));
+    $scope.project.members.splice(index, 1);
+    projectService.put($scope.project.url, $scope.project).success(function(){
+      $state.reload();
+    });
+  };
 
   $scope.init = function () {
-    if($stateParams.projectId !== null){
-      $scope.project = {
-        id: $stateParams.projectId,
-        title: "Proyecto dummy",
-        descripcion: "Esto es un dummy",
-        category: "3",
-        start_date: "01/01/2015",
-        end_date: "01/02/2015",
-        owner: 5
-      };
+    if($stateParams.projectUrl !== null){
+      projectService.getByUrl($stateParams.projectUrl).success(function(data){
+        $scope.project = data;
+        userService.getAll().success(function(data){
+          angular.forEach(data.results, function(value, key) {
+        		if(value.id != $scope.user.id && $.inArray(value.id ,$scope.project.members) == -1){
+              $scope.users.push({id: value.id, username: value.username});
+            }
+            if($.inArray(value.id ,$scope.project.members) != -1) $scope.members.push({id: value.id, username: value.username});
+      		});
+        });
+        if($scope.user.id == $scope.project.id_owner) $scope.isOwner = true;
+      });
     }else $state.go("dashboard");
   };
 

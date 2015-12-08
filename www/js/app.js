@@ -25,21 +25,21 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
     }).state('projectForm', {
       url: "/dashboard/projectForm",
       params: {
-        projectId: null,
+        projectUrl: null,
       },
       templateUrl: "views/projectForm.html",
       controller: "projectFormController"
     }).state('project', {
       url: "/dashboard/project",
       params: {
-        projectId: null,
+        projectUrl: null,
       },
       templateUrl: "views/project.html",
       controller: "projectController"
     }).state('riskForm', {
       url: "/dashboard/project/riskForm",
       params: {
-        projectId: null,
+        projectUrl: null,
       },
       templateUrl: "views/riskForm.html",
       controller: "riskFormController"

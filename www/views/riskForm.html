@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-lg-2 col-md-1"></div>
         <div class="col-lg-8 col-md-10">
-            <form name="proyForm" novalidate>
+            <form name="riskForm" novalidate>
                 <div class="panel panel-warning" style="margin:20px 10px 25px 10px">
                     <div class="panel-heading">
                         <strong><i class="fa fa-warning"></i> <i ng-show="!project.id">Insertar nuevo requisito</i></strong>
@@ -15,7 +15,7 @@
                                 <label>Riesgo:</label>
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon2"><i class="fa fa-tag"></i></span>
-                                    <select class="form-control" id="category" ng-model="project.category" required>
+                                    <select class="form-control" id="riesgo" ng-model="riesgo.id" onclick="cambiarCampos('1')">
                                         <option>-</option>
                                         <option>1</option>
                                         <option>2</option>
@@ -23,29 +23,29 @@
                                 </div>
                                 </br>
                                 <label>Probabilidad:</label>
-                                <input type="text" class="form-control" id="probabilidad" placeholder="Opcional" ng-model="project.probabilidad">
+                                <input type="text" class="form-control" id="probabilidad" placeholder="Opcional" ng-model="riesgo.probabilidad">
                                 </br>
 
                                 <label>Impacto:</label>
-                                <input type="text" class="form-control" id="impacto" placeholder="Opcional" ng-model="project.impacto">
+                                <input type="text" class="form-control" id="impacto" placeholder="Opcional" ng-model="riesgo.impacto">
                                 </br>
 
                                 <label>Factores:</label>
-                                <input type="text" class="form-control" id="factores" placeholder="Opcional" ng-model="project.factores">
+                                <input type="text" class="form-control" id="factores" placeholder="Opcional" ng-model="riesgo.factores">
                                 </br>
 
                                 <label>Descripción:</label>
-                                <textarea class="form-control" id="descripcion" placeholder="Opcional" ng-model="project.descripcion" rows="5"></textarea>
+                                <textarea class="form-control" id="descripcion" placeholder="Opcional" ng-model="riesgo.descripcion" rows="5"></textarea>
                                 </br>
                             </div>
 
                             <div id="reqNew" class="col-sm-6"></br>
                                 <label>Nuevo riesgo:</label>
-                                <input type="text" class="form-control" id="nombre" placeholder="Nombre" ng-model="project.nombre">
+                                <input type="text" class="form-control" id="nombre" placeholder="Nombre" onclick="cambiarCampos('2')" ng-model="riesgoNew.nombre">
                                 </br>
 
                                 <label>Categoria:</label>
-                                <select class="form-control" id="categoria" ng-model="project.categoria" required>
+                                <select class="form-control" id="categoria" ng-model="riesgoNew.categoria" required>
                                     <option>-</option>
                                     <option>1</option>
                                     <option>2</option>
@@ -53,11 +53,11 @@
                                 </br>
 
                                 <label>Descripción:</label>
-                                <textarea class="form-control" id="descripcionNew" placeholder="Opcional" ng-model="project.descripcionNew" rows="3"></textarea>
+                                <textarea class="form-control" id="descripcionNew" placeholder="Opcional" ng-model="riesgoNew.descripcionNew" rows="3"></textarea>
                                 </br>
 
                                 <label>Tipo:</label>
-                                <input type="text" class="form-control" id="tipo" placeholder="Opcional" ng-model="project.tipo">
+                                <input type="text" class="form-control" id="tipo" placeholder="Opcional" ng-model="riesgoNew.tipo">
                                 </br></br></br>
                             </div>
                         </div>
@@ -76,3 +76,25 @@
         </div>
     </div>
 </div>
+
+<script>
+function cambiarCampos(aux)
+{
+
+    if(aux == 1)
+    {
+        document.getElementById('nombre').disabled=true;
+        document.getElementById('categoria').disabled=true;
+        document.getElementById('descripcionNew').disabled=true;
+        document.getElementById('tipo').disabled=true;
+    }
+    else if(aux == 2)
+    {
+        document.getElementById('riesgo').disabled=true;
+        document.getElementById('probabilidad').disabled=true;
+        document.getElementById('impacto').disabled=true;
+        document.getElementById('factores').disabled=true;
+        document.getElementById('descripcion').disabled=true;
+    }
+}
+</script>

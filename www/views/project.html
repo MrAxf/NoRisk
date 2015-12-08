@@ -9,7 +9,7 @@
 		      <div class="row">
 	          <div class="col-md-12 col-xs-6"><h1>{{project.title}}</h1></div>
 	          <div class="col-md-12 col-xs-6">
-	            <h3>{{project.descripcion}}</h3>
+	            <h3>{{project.description}}</h3>
 	          </div>
 			    </div>
 		    </div>
@@ -20,17 +20,19 @@
 		      <strong><i class="fa fa-users"></i> Integrantes</strong>
 		    </div>
 		    <ul class="panel-body list-group lPanelBodySmall" style="overflow-y:scroll;">
-		      <li class="list-group-item" ng-repeat="user in members"><i class="fa fa-user"></i> {{user.username}}</li>
+		      <li class="list-group-item" ng-repeat="user in members">
+						<i class="fa fa-user"></i> {{user.username}}<a class="pull-right" style="margin:0px 2px; cursor:pointer;" ng-show="isOwner" ng-click="deleteMember(user.id)"><i class="fa fa-trash"></i></a>
+					</li>
 		    </ul>
 		    <div class="panel-footer">
-					<form class="form-horizontal">
+					<form class="form-horizontal" ng-show="isOwner">
 						<div class="form-group">
 							<div class="col-md-8 col-xs-6">
-								<select class="form-control" id="user" ng-model="userToAdd" required>
-									<option ng-repeat="user in noMembers">{{user.username}}</option>
+								<select class="form-control" id="user" ng-model="member" required>
+									<option ng-repeat="user in users" value={{user.id}}>{{user.username}}</option>
 								</select>
 							</div>
-							<button class="btn btn-success col-md-3 col-xs-5"><i class="fa fa-plus"></i> Añadir miembro</button>
+							<button class="btn btn-success col-md-3 col-xs-5" ng-disabled="!member" ng-click="addMembers(member)"><i class="fa fa-plus"></i> Añadir miembro</button>
 							<div class="col-xs-1"></div>
 						</div>
 					</form>
@@ -42,7 +44,7 @@
         <strong><i class="fa fa-warning"></i> Riesgos</strong>
       </div>
       <ul class="panel-body list-group rPanelBody">
-				<risk-list ng-repeat="risk in risks" info="risk"><risk-list>
+				<risk-list ng-repeat="risk in project.risk_projects" info="risk"><risk-list>
       </ul>
       <div class="panel-footer">
         <div class="row">

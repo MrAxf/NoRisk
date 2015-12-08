@@ -2,8 +2,8 @@
   <div class="container-fluid">
     <div class="row">
   	  <div class="col-xs-4">
-        <h2>{{info.name}}</h2>
-        <h4><strong>Categoria:</strong> {{info.category}}</h4>
+        <h2>{{info.id_risk.name}}</h2>
+        <h4><strong>Categoria:</strong> {{info.id_risk.category}}</h4>
       </div>
       <div class="col-xs-4">
         <h4><strong>Probabilidad:</strong> {{info.probability}}%</h4>
@@ -15,7 +15,7 @@
   </br>
     <div class="row">
       <div class="col-xs-12">
-        <p><strong>Descripción:</strong> {{info.description}}</p>
+        <p><strong>Descripción:</strong> {{info.id_risk.description}}</p>
         <p><strong>Factores que influyen:</strong> {{info.factors}}</p>
         <p><strong>Reducción del riesgo:</strong> {{info.reduction}}</p>
         <p><strong>Supervisión del riesgo:</strong> {{info.supervision}}</p>

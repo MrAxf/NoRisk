@@ -4,11 +4,10 @@ app.factory("auth", ['$cookies','$state', '$rootScope', 'userService', function(
         login : function(username, password)
         {
           userService.getAll().success(function(data){
-            var users = {};
             angular.forEach(data.results, function(value, key) {
-              users[value.username] = value.password;
-              if(users[username] == password){
-                $cookies.put('username', username);
+              if(value.username == username && value.password == password){
+                $cookies.put('username', value.username);
+                $cookies.put('id', value.id);
                 $state.go("dashboard");
                 $rootScope.$broadcast('authEvent');
               }else $rootScope.$broadcast('authFail');
@@ -18,6 +17,7 @@ app.factory("auth", ['$cookies','$state', '$rootScope', 'userService', function(
         logout : function()
         {
           $cookies.remove("username");
+          $cookies.remove("id");
           $state.go("home");
           $rootScope.$broadcast('authEvent');
         },
